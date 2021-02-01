@@ -1,4 +1,4 @@
-path = "data/DNA.txt"
+path = "../data/DNA.txt"
 
 with open(path) as f:
     dna = f.read()

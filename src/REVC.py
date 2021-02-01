@@ -1,4 +1,4 @@
-path = "data/REVC.txt"
+path = "../data/REVC.txt"
 
 with open(path) as f:
     dna = f.read().strip()

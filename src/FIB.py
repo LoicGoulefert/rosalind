@@ -6,7 +6,7 @@ def fibonacci_rabbits(n, k):
 
 
 if __name__ == "__main__":
-    path = "data/FIB.txt"
+    path = "../data/FIB.txt"
 
     with open(path) as f:
         data = f.read().strip().split(" ")

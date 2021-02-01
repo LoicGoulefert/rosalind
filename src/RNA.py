@@ -1,4 +1,4 @@
-path = "data/RNA.txt"
+path = "../data/RNA.txt"
 
 with open(path) as f:
     dna = f.read().strip()
