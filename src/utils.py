@@ -24,3 +24,50 @@ def parse_fasta(data):
             res[key] = value
 
     return res
+
+
+def build_codon_table(path):
+    """Build the codon table as a dict.
+
+    Args:
+        path: the path to the codon table file
+
+    Returns:
+        a dict with key: codon and value: corresponding protein amino acid
+    """
+
+    with open(path) as f:
+        data = [s.strip() for s in f.readlines()]
+
+    table = {}
+
+    for line in data:
+        key, value = line.split(" ")
+        table[key] = value
+
+    return table
+
+
+def build_inverse_codon_table(path):
+    """Build the inverse codon table as a dict.
+
+    Args:
+        path: the path to the codon table file
+
+    Returns:
+        a dict with key: protein amino acid and value: list of corresponding codons
+    """
+
+    with open(path) as f:
+        data = [s.strip() for s in f.readlines()]
+
+    table = {}
+
+    for line in data:
+        value, key = line.split(" ")
+        if key in table:
+            table[key] += [value]
+        else:
+            table[key] = [value]
+
+    return table

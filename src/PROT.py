@@ -1,16 +1,4 @@
-def read_codon_table(path):
-    """Returns the codon table as a dict."""
-
-    with open(path) as f:
-        data = [s.strip() for s in f.readlines()]
-
-    table = {}
-
-    for line in data:
-        key, value = line.split(" ")
-        table[key] = value
-
-    return table
+from utils import build_codon_table
 
 
 def rna_to_protein(rna, codon_table):
@@ -40,7 +28,7 @@ if __name__ == "__main__":
     codon_table_path = "../data/RNA_codon_table.txt"
     input_path = "../data/PROT.txt"
 
-    codon_table = read_codon_table(codon_table_path)
+    codon_table = build_codon_table(codon_table_path)
 
     with open(input_path) as f:
         rna = f.read()
