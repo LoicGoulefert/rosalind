@@ -12,8 +12,8 @@ def find_lcs(fasta_seqs):
     Returns:
         The longest common substring among the given sequences
     """
-    #  find min length sequence and it's name
-    min_name, min_seq = min(fasta_seqs.items(), key=lambda x: len(x[1]))
+    #  find min length sequence
+    _, min_seq = min(fasta_seqs.items(), key=lambda x: len(x[1]))
 
     # Build every substring from the shortest sequence (length 2 minimum)
     # Sort them by length and remove duplicates
