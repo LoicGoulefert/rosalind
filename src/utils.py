@@ -71,3 +71,49 @@ def build_inverse_codon_table(path):
             table[key] = [value]
 
     return table
+
+
+def transcribe(dna):
+    """Transcribe a DNA sequence into its corresponding RNA.
+
+    Args:
+        dna: a sequence of amino acids
+
+    Returns:
+        a sequence of amino acids corresponding to the RNA of the input sequence
+    """
+
+    rna = dna.replace("T", "U")
+
+    return rna
+
+
+def rna_to_protein(rna, codon_table):
+    """Translate a RNA strand into a protein.
+
+    Args:
+        rna: sequence of amino acids
+        codon_table: dict of codon to protein amino acid
+
+    Returns:
+        an amino acid chain corresponding to the protein translated from rna
+    """
+
+    if rna[:3] != "AUG":
+        raise ValueError(f"rna must start with 'AUG', got {rna[:3]}.")
+
+    if rna[-3:] not in ["UAA", "UAG", "UGA"]:
+        raise ValueError(f"rna must end with 'UAA', 'UAG' or 'UGA'. Got {rna[-3:]}.")
+
+    if len(rna) % 3 != 0:
+        raise ValueError(f"rna size must be a multiple of 3. Got size {len(rna)}.")
+
+    protein = ""
+
+    for i in range(0, len(rna), 3):
+        codon = rna[i : i + 3]
+        if codon_table[codon] == "Stop":
+            break
+        protein += codon_table[codon]
+
+    return protein
