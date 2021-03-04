@@ -88,6 +88,25 @@ def transcribe(dna):
     return rna
 
 
+def reverse_complement(dna):
+    """Return the reverse complement of a DNA strand.
+
+    Args:
+        dna: string
+
+    Returns:
+        the reverse complement of input DNA
+    """
+
+    d = {"A": "T", "T": "A", "C": "G", "G": "C"}
+    dna_comp = ""
+
+    for nt in dna:
+        dna_comp += d[nt]
+
+    return dna_comp[::-1]
+
+
 def rna_to_protein(rna, codon_table):
     """Translate a RNA strand into a protein.
 

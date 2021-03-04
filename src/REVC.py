@@ -1,13 +1,9 @@
-path = "../data/REVC.txt"
+from utils import reverse_complement
 
-with open(path) as f:
-    dna = f.read().strip()
 
-d = {"A": "T", "T": "A", "C": "G", "G": "C"}
+if __name__ == "__main__":
+    path = "../data/REVC.txt"
+    with open(path) as f:
+        dna = f.read().strip()
 
-dna_comp = ""
-
-for nt in dna:
-    dna_comp += d[nt]
-
-print(dna_comp[::-1])
+    print(reverse_complement(dna))
